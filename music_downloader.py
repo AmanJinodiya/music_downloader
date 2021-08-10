@@ -1,4 +1,4 @@
-# import module
+
 from selenium import webdriver
 from tkinter import *
 import time
@@ -60,11 +60,9 @@ def click():
 
     down_click  = driver.find_element_by_xpath("/html/body/div[2]/div[3]/div/div[2]/div[2]/ul[1]/li[3]/span[2]").click()
     down_click  = driver.find_element_by_xpath("/html/body/div[2]/div[3]/div/div[2]/div[2]/ul[1]/li[3]/span[2]").click()
-    speak("sir whichever you want click on it.. please or otherwise I choose for you SIR")
-    
-    
-    final_click  = driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div[2]/div[3]/ul/li[1]/div[1]").click()
-    
+    speak("sir whichever you want click on it please or I choose for you ")
+    time.sleep(5)
+    final_click = driver. find_element_by_xpath('//*[@id="downloadBtn"]').click()
 
 
 root = Tk()
@@ -74,7 +72,7 @@ root.title("MuSiC DoWNlodER")
 root.wm_iconbitmap("img1.ico")
 root.config(bg="black")
 
-img = Image.open("bg3.jfif")
+img = Image.open("bg4.png")
 photo = ImageTk.PhotoImage(img)
 
 Label(root, image= photo).place(x = 0, y = 0 )
@@ -85,8 +83,8 @@ song_n= StringVar()
 # a =Text(root,height=1,width= 50, font = "lucida 10 bold")
 # a
 
-Entry(root, textvariable= song_n,width=25,font ="lucida 10 bold",bg="black",fg = "cyan" ).place(x = 270, y= 100)
+Entry(root, textvariable= song_n,width=25,font ="lucida 10 bold",bg="salmon" ).place(x = 470, y= 260)
 
-Button(root, text="Let Me download SIR!",width= 15, height=1,command = click,bg= "black",fg= "cyan2").place(x = 290,y = 150)
+Button(root, text="Let Me download SIR!",width= 15, height=1,command = click,bg= "salmon",fg = "gray1").place(x = 500,y = 320)
 
 root.mainloop()
