@@ -3,7 +3,7 @@ from selenium import webdriver
 from tkinter import *
 import time
 import pyttsx3
-
+import pyautogui
 from selenium.webdriver.common.keys import Keys
 from PIL import Image, ImageTk
 
@@ -16,18 +16,14 @@ def speak(comm):
     engine.say(comm)
     engine.runAndWait()
 
-
 def click():
 
     list = (song_n.get()).split("-")
     for item in list:
         driver = webdriver.Chrome()
+        driver.maximize_window()
 
         url = "https://mp3quack.lol/"
-
-
-        new_url = "https://mp3quack.lol/"
-
 
         driver.get(url)
 
@@ -41,29 +37,15 @@ def click():
 	        inputElem.send_keys(Keys.ENTER)
 
         down_click  = driver.find_element_by_xpath("/html/body/div[2]/div[3]/div/div[2]/div[2]/ul[1]/li[3]/span[2]").click()
-
-
-        driver.execute_script("window.open('');")
-
-
-        driver.switch_to.window(driver.window_handles[1])
-        driver.get(new_url)
-    
-        inputElems = driver.find_elements_by_css_selector('[id="searchInput"]')
-
-        for inputElem in inputElems:
-
-	        inputElem.send_keys(item)
-
-	
-	        inputElem.send_keys(Keys.ENTER)
+        pyautogui.moveTo(8,0,duration=0.0)
+        pyautogui.click()
 
         down_click  = driver.find_element_by_xpath("/html/body/div[2]/div[3]/div/div[2]/div[2]/ul[1]/li[3]/span[2]").click()
         down_click  = driver.find_element_by_xpath("/html/body/div[2]/div[3]/div/div[2]/div[2]/ul[1]/li[3]/span[2]").click()
-        speak("sir whichever you want click on it please")
-        time.sleep(10)
-    
-
+        time.sleep(1)
+        pyautogui.moveTo(720,425,duration =0.0)
+        pyautogui.click()
+        speak("Downloading sir")
 
 root = Tk()
 
@@ -72,10 +54,12 @@ root.title("MuSiC DoWNlodER")
 # root.wm_iconbitmap("img1.ico")
 root.config(bg="black")
 
-img = Image.open("bg4.png")
-photo = ImageTk.PhotoImage(img)
-
-Label(root, image= photo).place(x = 0, y = 0 )
+# img = Image.open("bg4.png")
+# load = Image.open("bg4.png")
+# render = ImageTk.PhotoImage(load)
+# img = Label(root, image=render)
+# img.image = render
+# img.place(x=0, y=0)
 
 Label(root, text= "MUSIC == LOVE ", font = "lucida 30 bold", fg="salmon",bg ="dark slate gray").place(x =190, y = 10 )
 song_n= StringVar()
